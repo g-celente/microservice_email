@@ -15,7 +15,7 @@ public class EmailConsumer {
 
     private final EmailService emailService;
 
-    @RabbitListener(queues = "${broker.queue.email.name}")
+    @RabbitListener(queues = "default.email")
     public void receive(@Payload EmailDTO emailDto) {
         var emailModel = new Email();
         BeanUtils.copyProperties(emailDto, emailModel);
